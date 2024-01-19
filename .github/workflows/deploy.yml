@@ -22,4 +22,4 @@ jobs:
       uses: docker/build-push-action@v5
       with: 
         push: true
-        tags: user/nodeapp:latest
+        tags: 4925k/nodeapp:latest
