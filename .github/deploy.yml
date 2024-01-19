@@ -1,0 +1,28 @@
+name: NodeJS App
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs: 
+  deploy:
+    name: deploy to github pages
+
+  publish-docker-hub:
+    name: publish image to docker hub
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: login to docker hub
+      uses: docker/login-action@v4
+      with:
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+        password: ${{secrets.DOCKERHUB_TOKEN}}
+
+    - name: build and push
+      uses: docker/build-push-action@v5
+      with: 
+        push: true
+        tags: user/nodeJSapp:latest
