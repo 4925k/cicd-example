@@ -2,14 +2,15 @@ version: "3.8"
 
 services:
   nodeapp:
-    build: .
+    image: 4925k/nodeapp
     ports:
       - 8080:8080
+    container_name: nodeapp
 
   watchtower:
     image: containrrr/watchtower
     environment:
-      - WATCHTOWER_POLL_INTERVAL=60
+      - WATCHTOWER_POLL_INTERVAL=10
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: watchtower
